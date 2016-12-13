@@ -4,7 +4,7 @@ require 'faker'
 @intercom = Intercom::Client.new(token: "#{ARGV[0]}")
 
 @user_id = []
-2.times do 
+15.times do 
 	@user_id << rand(300)
 end
 
@@ -23,12 +23,10 @@ monthly_spend = []
 	monthly_spend << rand(600..2000)
 end
 
-@ids = @user_id
-
 
 def user_and_company_generator(company_id, company_name, monthly_spend)
 	
-	2.times do
+	5.times do
 		@intercom.users.submit_bulk_job(
 			create_items: [
 				{
@@ -64,19 +62,7 @@ def lead_generator
 	end
 end
 
-def tagger
-	@ids.each do |id|
-		@intercom.tags.tag(name: "TAGGER", users: [{user_id: "#{id}"}])
-	end
-end
-
 user_and_company_generator(company_id[0], company_name[0], monthly_spend[0])
-# user_and_company_generator(company_id[1], company_name[1], monthly_spend[1])
-# user_and_company_generator(company_id[2], company_name[2], monthly_spend[2])
-# lead_generator
-# sleep 15
-# tagger 
-
-
-	
-
+user_and_company_generator(company_id[1], company_name[1], monthly_spend[1])
+user_and_company_generator(company_id[2], company_name[2], monthly_spend[2])
+lead_generator
