@@ -8,5 +8,11 @@ Those settings can be changed by editing the code, feel free to play around with
 1. Clone the repo to your desktop.
 2. In the terminal, navigate to the repo folder and run `bundle install`.
 3. Make sure you have extended scope on your personal access token in your Intercom test app.
-4. In the terminal, run the script by typing `ruby app.rb PASTE YOUR PERSONAL ACCESS TOKEN HERE`.
+4. In the terminal, run the script by typing `ruby app.rb PASTE_YOUR_PERSONAL_ACCESS_TOKEN_HERE`.
 
+# Intercom-Conversation-Generator
+A Ruby script that takes each line of a CSV to use as in a conversation User Initiated Conversation. Go ahead and edit the questions in the CSV before running. This sections assumes you have already created your users 
+
+###How to use:
+1. Navigate to /conversation_seed.rb
+2. Run `ruby conversation_seed.rb` and you will be prompted for the your Personal Access Token
