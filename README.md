@@ -11,8 +11,8 @@ Those settings can be changed by editing the code, feel free to play around with
 4. In the terminal, run the script by typing `ruby app.rb PASTE_YOUR_PERSONAL_ACCESS_TOKEN_HERE`.
 
 # Intercom-Conversation-Generator
-A Ruby script that takes each line of a CSV to use as in a conversation User Initiated Conversation. Go ahead and edit the questions in the CSV before running. This sections assumes you have already created your users 
+A Ruby script that takes each line of a CSV to use as in a conversation User Initiated Conversation. You can add and edit the questions in the CSV before running. 
+This sections assumes you have already created your users. 
 
 ###How to use:
-1. Navigate to /conversation_seed.rb
-2. Run `ruby conversation_seed.rb` and you will be prompted for the your Personal Access Token
+Run `ruby convo_seed.rb` and paste your Personal Access Token when prompted.
