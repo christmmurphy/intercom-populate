@@ -48,11 +48,22 @@
       </div>
       
       <div class="container">  
-        <form action="/seed" method="POST">
-          <div class="form-group">
-            <label for="PAT_input">Personal Access Token:</label>
-            <input type="text" class="form-control" name="pat" placeholder="pat">
-          </div>
+        <form method="POST" action="/seed" >
+            <div class="form-group">
+              <label>Personal Access Token:</label>
+              <input type="text" class="form-control" placeholder="pat" name="pat">
+            </div>
+            <div class="form-group">
+              <label for="formGroupExampleInput">Number of Users:</label>
+              <input type="text" class="form-control" id="users" name="number_of_users">
+            </div>
+            <div class="form-group">
+              <label for="formGroupExampleInput2">Number of Companies:</label>
+              <input type="text" class="form-control" id="companies" name="number_of_companies">
+            </div>
+
+
+
           <button type="submit" class="btn btn-primary">Submit</button>
         </form>
       </div>
@@ -73,7 +84,6 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
     <script src="../../dist/js/bootstrap.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
