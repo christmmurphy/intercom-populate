@@ -15,7 +15,6 @@ end
 
 post '/seed' do
 	pat = params[:pat]
-
 	@intercom = Intercom::Client.new(token: pat)
 
 
@@ -42,7 +41,7 @@ post '/seed' do
 
 	def user_and_company_generator(company_id, company_name, monthly_spend)
 
-		5.times do
+		@user_id.count do
 			@intercom.users.submit_bulk_job(
 				create_items: [
 					{
@@ -73,16 +72,14 @@ post '/seed' do
 	end
 
 	def lead_generator
-		5.times do
+		@user_id.count.times do
 			@intercom.contacts.create(:email => "#{Faker::Internet.email}")
 		end
 	end
 
-	puts
 	puts "Populating your lovely test app with some fake users and companies. Hang tight! :)"
 	70.times do
 		print '•'
-		sleep 0.1
 	end
 	user_and_company_generator(company_id[0], company_name[0], monthly_spend[0])
 	user_and_company_generator(company_id[1], company_name[1], monthly_spend[1])
@@ -91,5 +88,46 @@ post '/seed' do
 	puts
 	puts "All done! Now either add conversations by running 'ruby convo_seed.rb' or go play with your new users!"
 
-	erb :index
+	erb :completed
+end
+
+post '/conversations' do
+    #Determine Which CSV To Use
+    puts "You selected #{params[:role]}"
+
+    # Open Spreadsheet
+    csv_text = File.read("#{params[:role]}.csv")
+    # Create array of questions
+    questions = []
+      csv_text.each_line {|line|
+       questions << line
+     }
+
+    # Goes through each user, grabs their ID and populates the inbox with questions
+    def populate(questions)
+
+      pat = params[:pat]
+      intercom = Intercom::Client.new(token: pat)
+
+    	index = 0
+    	intercom_id = []
+
+    	intercom.users.all.each do |user|
+    		intercom_id << user.id
+    		intercom.messages.create(
+    		  :from => {
+    		    :type => "user",
+    		    :id => user.id
+    		  },
+    		  :body => questions[index]
+    		)
+
+    	#I'm sure there's a better way to do this in Ruby
+        index = index + 1
+        break if index >= questions.count #Stop when you've used up all the questions in the CSV.
+    	end
+
+    end
+    populate(questions)
+    erb :completed
 end
