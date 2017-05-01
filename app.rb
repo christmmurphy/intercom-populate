@@ -39,7 +39,7 @@ def user_and_company_generator(company_id, company_name, monthly_spend)
 			create_items: [
 				{
 					user_id: @user_id.pop,
-					email: "#{Faker::Internet.email}",
+					email: "#{Faker::Name.first_name}@example.com",
 					name: "#{Faker::Superhero.name}",
 					last_seen_ip: "#{Faker::Internet.public_ip_v4_address}",
 					phone: "#{Faker::PhoneNumber.cell_phone}",
