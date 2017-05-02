@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Intercom Populate</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="/" >Intercom Populate</a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="jumbotron">
+      <div class="container">
+      </br>
+        <p>Paste in your personal access token and specify the number of users / companies.</p>
+      </div>
+
+      <div class="container">
+        <form method="POST" action="/seed" style="width:50%">
+            <div class="form-group">
+              <label>Personal Access Token:</label>
+              <input type="text" class="form-control" name="pat">
+            </div>
+            <div class="form-group">
+              <label for="formGroupExampleInput">Number of Users:</label>
+              <input type="text" class="form-control" id="users" name="number_of_users">
+            </div>
+            <div class="form-group">
+              <label for="formGroupExampleInput2">Number of Companies:</label>
+              <input type="text" class="form-control" id="companies" name="number_of_companies">
+            </div>
+
+
+
+          <button type="submit" class="btn btn-success">Submit</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="container">
+      <h1>Conversations</h1>
+      <form method="POST" action="/conversations" style="width:50%">
+          <div class="form-group">
+            <label>Personal Access Token:</label>
+            <input type="text" class="form-control" name="pat">
+          </div>
+          <div class="btn-group" data-toggle="button">
+            <label class="btn btn-primary active">
+              <input type="radio" name="role" id="CSR_button" value="CSR" autocomplete="off"> CSR
+            </label>
+            <label class="btn btn-primary">
+              <input type="radio" name="role" id="CSE_button" value="CSE" autocomplete="off"> CSE
+            </label>
+            <label class="btn btn-primary">
+              <input type="radio" name="role" id="CSL_button" value="CSL" autocomplete="off"> CSL
+            </label>
+          </div>
+        <button type="submit" class="btn btn-success">Submit</button>
+      </form>
+    </div>
+
+    <div class="container">
+      <!-- Example row of columns -->
+      <hr>
+      <footer>
+        <p>Contribute <a href="https://github.com/Aslonski/Intercom-User-Generator/tree/frontend">here</a>.</p>
+      </footer>
+    </div> <!-- /container -->
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="../../dist/js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+  </body>
+</html>
