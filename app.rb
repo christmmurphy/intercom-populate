@@ -18,6 +18,7 @@ post '/seed' do
 	@intercom = Intercom::Client.new(token: pat)
 
 
+
 	@user_id = []
 	params[:number_of_users].to_i.times do
 		@user_id << rand(300)
@@ -46,7 +47,7 @@ post '/seed' do
 				create_items: [
 					{
 						user_id: @user_id.pop,
-						email: "#{Faker::Internet.email}",
+						email: "#{Faker::Name.first_name}@example.com",
 						name: "#{Faker::Superhero.name}",
 						last_seen_ip: "#{Faker::Internet.public_ip_v4_address}",
 						phone: "#{Faker::PhoneNumber.cell_phone}",
