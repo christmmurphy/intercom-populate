@@ -3,6 +3,8 @@ require "sinatra"
 require "intercom"
 require "faker"
 
+num_of_companies = 10
+num_of_users = 60
 
 get '/' do
   erb :index
@@ -17,25 +19,23 @@ post '/seed' do
 	pat = params[:pat]
 	@intercom = Intercom::Client.new(token: pat)
 
-
-
 	@user_id = []
-	params[:number_of_users].to_i.times do
+	num_of_users.times do
 		@user_id << rand(300)
 	end
 
 	company_id = []
-	params[:number_of_companies].to_i.times do
+	num_of_companies.times do
 		company_id << rand(100..500)
 	end
 
 	company_name = []
-	params[:number_of_companies].to_i.times do
+	num_of_companies.times do
 	  company_name << Faker::App.name
 	end
 
 	monthly_spend = []
-	params[:number_of_companies].to_i.times do
+	num_of_companies.times do
 		monthly_spend << rand(600..2000)
 	end
 
@@ -104,7 +104,7 @@ post '/conversations' do
        questions << line
      }
 
-    # Goes through each user, grabs their ID and populates the inbox with questions
+    # Goes through  each user, grabs their ID and populates the inbox with questions
     def populate(questions)
 
       pat = params[:pat]
