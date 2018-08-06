@@ -106,16 +106,15 @@ post '/conversations' do
 
     # Goes through  each user, grabs their ID and populates the inbox with questions
     def populate(questions)
-
       pat = params[:pat]
-      intercom = Intercom::Client.new(token: pat)
+      @intercom = Intercom::Client.new(token: pat)
 
     	index = 0
     	intercom_id = []
 
-    	intercom.users.all.each do |user|
+    	@intercom.users.all.each do |user|
     		intercom_id << user.id
-    		intercom.messages.create(
+    		@intercom.messages.create(
     		  :from => {
     		    :type => "user",
     		    :id => user.id
@@ -123,6 +122,7 @@ post '/conversations' do
     		  :body => questions[index]
     		)
 
+        check_rate()
     	#I'm sure there's a better way to do this in Ruby
         index = index + 1
         break if index >= questions.count #Stop when you've used up all the questions in the CSV.
@@ -130,5 +130,14 @@ post '/conversations' do
 
     end
     populate(questions)
-    erb :completed
+    erb :index
+end
+
+def check_rate
+    if not @intercom.rate_limit_details[:remaining].nil? and @intercom.rate_limit_details[:remaining] < 2
+        sleep_time = @intercom.rate_limit_details[:reset_at].to_i - Time.now.to_i
+        puts("Waiting for #{sleep_time} seconds to allow for rate limit to be reset")
+        sleep sleep_time
+      end
+    else
 end
