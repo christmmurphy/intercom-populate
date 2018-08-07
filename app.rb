@@ -97,8 +97,7 @@ post '/conversations' do
     puts "You selected #{params[:role]}"
 
     # Open Spreadsheet
-    # csv_text = File.read("#{params[:role]}.csv")
-    csv_text = File.read("/csl.csv")
+    csv_text = File.read("#{params[:role]}.csv")
     # Create array of questions
     questions = []
       csv_text.each_line {|line|
