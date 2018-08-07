@@ -97,7 +97,8 @@ post '/conversations' do
     puts "You selected #{params[:role]}"
 
     # Open Spreadsheet
-    csv_text = File.read("#{params[:role]}.csv")
+    csv_text = File.read("csr.csv")
+
     # Create array of questions
     questions = []
       csv_text.each_line {|line|
@@ -106,13 +107,10 @@ post '/conversations' do
 
     # Goes through each user, grabs their ID and populates the inbox with questions
     def populate(questions)
-
       pat = params[:pat]
       intercom = Intercom::Client.new(token: pat)
-
     	index = 0
     	intercom_id = []
-
     	intercom.users.all.each do |user|
     		intercom_id << user.id
     		intercom.messages.create(
@@ -122,12 +120,10 @@ post '/conversations' do
     		  },
     		  :body => questions[index]
     		)
-
     	#I'm sure there's a better way to do this in Ruby
         index = index + 1
         break if index >= questions.count #Stop when you've used up all the questions in the CSV.
     	end
-
     end
     populate(questions)
     erb :completed
