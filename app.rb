@@ -3,8 +3,6 @@ require "sinatra"
 require "intercom"
 require "faker"
 
-num_of_companies = 10
-num_of_users = 60
 
 get '/' do
   erb :index
@@ -19,23 +17,25 @@ post '/seed' do
 	pat = params[:pat]
 	@intercom = Intercom::Client.new(token: pat)
 
+
+
 	@user_id = []
-	num_of_users.times do
+	params[:number_of_users].to_i.times do
 		@user_id << rand(300)
 	end
 
 	company_id = []
-	num_of_companies.times do
+	params[:number_of_companies].to_i.times do
 		company_id << rand(100..500)
 	end
 
 	company_name = []
-	num_of_companies.times do
+	params[:number_of_companies].to_i.times do
 	  company_name << Faker::App.name
 	end
 
 	monthly_spend = []
-	num_of_companies.times do
+	params[:number_of_companies].to_i.times do
 		monthly_spend << rand(600..2000)
 	end
 
@@ -104,8 +104,9 @@ post '/conversations' do
        questions << line
      }
 
-    # Goes through  each user, grabs their ID and populates the inbox with questions
+    # Goes through each user, grabs their ID and populates the inbox with questions
     def populate(questions)
+
       pat = params[:pat]
       intercom = Intercom::Client.new(token: pat)
 
@@ -122,12 +123,12 @@ post '/conversations' do
     		  :body => questions[index]
     		)
 
-        #I'm sure there's a better way to do this in Ruby
+    	#I'm sure there's a better way to do this in Ruby
         index = index + 1
         break if index >= questions.count #Stop when you've used up all the questions in the CSV.
     	end
 
     end
     populate(questions)
-    erb :index
+    erb :completed
 end
