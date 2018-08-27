@@ -30,8 +30,7 @@
       <form method="POST" action="/seed">
           <div class="form-group">
             <h2>Generate Users</h2>
-            <label>Personal Access Token:</label>
-            <input type="text" class="form-control" name="pat">
+            <input type="text" class="form-control" name="pat" placeholder="Personal Access Token">
           </div>
         <button type="submit" class="btn btn-success">Generate 100 Users 🥁</button>
       </form>
@@ -41,22 +40,24 @@
       <h2>Generate Conversations</h2>
       <form method="POST" action="/conversations">
           <div class="form-group">
-            <p>Make sure you have already generated some users before trying to create conversations! :)
+            <div class="alert alert-info" role="alert">
+              <strong>Heads up!</strong> Make sure you have already generated some users before trying to create conversations! :)
+            </div>
             <label>Personal Access Token:</label>
-            <input type="text" class="form-control" name="pat">
+            <input type="text" class="form-control" name="pat" placeholder="Personal Access Token">
           </div>
           <div class="btn-group" data-toggle="button">
             <label class="btn btn-primary active">
-              <input type="radio" name="role" id="CSR_button" value="CSR" autocomplete="off"> CSR
+              <input type="radio" name="role" id="CSR_button" value="CSR" autocomplete="off"> Question Set #1
             </label>
             <label class="btn btn-primary">
-              <input type="radio" name="role" id="CSE_button" value="CSE" autocomplete="off"> CSE
+              <input type="radio" name="role" id="CSE_button" value="CSE" autocomplete="off"> Question Set #2
             </label>
             <label class="btn btn-primary">
-              <input type="radio" name="role" id="CSL_button" value="CSL" autocomplete="off"> CSL
+              <input type="radio" name="role" id="CSL_button" value="CSL" autocomplete="off"> Question Set #3
             </label>
           </div>
-        <button type="submit" class="btn btn-success">Generate Convos 🗣</button>
+        <button type="submit" class="btn btn-success">Generate! 🗣</button>
       </form>
     </div>
 
@@ -64,7 +65,6 @@
       <!-- Example row of columns -->
       <hr>
       <footer>
-      <a onclick="/scripts.js"><button id="button">Button!</button></a>
       </footer>
     </div> <!-- /container -->
   </body>

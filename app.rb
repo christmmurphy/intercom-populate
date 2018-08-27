@@ -12,6 +12,10 @@ get '/' do
   erb :index
 end
 
+get '/completed' do
+  erb :completed
+end
+
 get '/control' do
   erb :control
 end
@@ -120,6 +124,7 @@ post '/conversations' do
     	index = 0
     	intercom_id = []
     	intercom.users.all.each do |user|
+        sleep(0.5)
     		intercom_id << user.id
     		intercom.messages.create(
     		  :from => {
