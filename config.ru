@@ -1,6 +1,4 @@
 require './app'
-run Sinatra::Application
-
 run lambda { |env|
   [
     200,
@@ -10,3 +8,4 @@ run lambda { |env|
     }
   ]
 }
+run Sinatra::Application
