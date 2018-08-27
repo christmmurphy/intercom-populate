@@ -1,11 +1,4 @@
 require './app'
-run lambda { |env|
-  [
-    200,
-    {
-      'Content-Type'  => 'text/html',
-      'Cache-Control' => 'public, max-age=86400'
-    }
-  ]
-}
+# Setup public folder
+set :public_folder, File.join(APP_ROOT, "public")
 run Sinatra::Application
