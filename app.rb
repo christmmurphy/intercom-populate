@@ -110,12 +110,13 @@ post '/conversations' do
 
     # Open Spreadsheet
     get_csv = "#{params[:role]}"
-    if get_csv = "csr"
+    if get_csv == "csr"
       csv_text = File.read("https://cl.ly/a4f78da3a63b/csr.csv")
-    elsif get_csv = "cse"
+    elsif get_csv == "cse"
       csv_text = File.read("https://cl.ly/abd0a3ee50fa/cse.csv")
     else
-      csv_text = File.read("https://cl.ly/7aa520d2d8db/csl.csv")
+      csv_text == File.read("https://cl.ly/7aa520d2d8db/csl.csv")
+    end
 
 
 
