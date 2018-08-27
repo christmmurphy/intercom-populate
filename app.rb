@@ -4,8 +4,8 @@ require "intercom"
 require "faker"
 
 
-number_of_users = 100
-number_of_companies = 20
+number_of_users = 30
+number_of_companies = 6
 
 
 get '/' do
@@ -28,32 +28,25 @@ end
 post '/seed' do
 	pat = params[:pat]
 	@intercom = Intercom::Client.new(token: pat)
-
-
-
 	@user_id = []
-	number_of_users.times do
+	30.times do
 		@user_id << rand(300)
 	end
-
 	company_id = []
-	number_of_companies.times do
+	30.times do
 		company_id << rand(100..500)
 	end
-
 	company_name = []
-	number_of_users.times do
+	30.times do
 	  company_name << Faker::App.name
 	end
-
 	monthly_spend = []
-	number_of_users.times do
+	30.times do
 		monthly_spend << rand(600..2000)
 	end
 
 
 	def user_and_company_generator(company_id, company_name, monthly_spend)
-
 		@user_id.count do
 			@intercom.users.submit_bulk_job(
 				create_items: [
@@ -90,17 +83,11 @@ post '/seed' do
 		end
 	end
 
-	puts "Populating your lovely test app with some fake users and companies. Hang tight! :)"
-	70.times do
-		print '•'
-	end
 	user_and_company_generator(company_id[0], company_name[0], monthly_spend[0])
 	user_and_company_generator(company_id[1], company_name[1], monthly_spend[1])
 	user_and_company_generator(company_id[2], company_name[2], monthly_spend[2])
 	# lead_generator
-	puts
 	puts "All done! Now either add conversations by running 'ruby convo_seed.rb' or go play with your new users!"
-
 	erb :completed
 end
 
