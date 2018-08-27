@@ -113,9 +113,9 @@ post '/conversations' do
     if get_csv == "csr"
       csv_text = ["Here's some questions.", "I'd like to purchase an Intercom system for our building.", "How much do you charge per API?", "I heard you had a deal on 2 for 1 webhooks that I'd like to get in on.", "I'll see you on the internet!"]
     elsif get_csv == "cse"
-      csv_text = ["Here's some questions.", "I'd like to purchase an Intercom system for our building.", "How much do you charge per API?", "I heard you had a deal on 2 for 1 webhooks that I'd like to get in on.", "I'll see you on the internet!"]
+      csv_text = ["Hey! I was hoping to learn more about your product! Can you help?", "Good afternoon! Where I can I disable my notifications and cancel my account? I need assistance.", "I'd like to speak with my account executive! Could you point me in the right direction please!", "Can you help me?", "I want to know more about your product as well as get a demo, could you help!"]
     else
-      csv_text = ["Here's some questions.", "I'd like to purchase an Intercom system for our building.", "How much do you charge per API?", "I heard you had a deal on 2 for 1 webhooks that I'd like to get in on.", "I'll see you on the internet!"]
+      csv_text = ["I have a number of questions about my bill!", "I can't access my account,", "The upgrade instructions are unclear and I am stuck. Can someone let me know how to proceed?", "I have a series of questions. Plz help.", "Thanks so much for the demo! I'd like to upgrade."]
     end
 
 
@@ -133,7 +133,6 @@ post '/conversations' do
     	index = 0
     	intercom_id = []
     	intercom.users.all.each do |user|
-        sleep(0.5)
     		intercom_id << user.id
     		intercom.messages.create(
     		  :from => {
