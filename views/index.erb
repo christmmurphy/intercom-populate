@@ -2,49 +2,46 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Intercom Populate</title>
-    <!-- Latest compiled and minified CSS -->
+    <title>Intercom Generate</title>
+    <script src="/scripts.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <!-- Optional theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="/style.css"/>
+    <link rel="icon" type="image/png" href="/favicon.ico">
+
   </head>
 
   <body>
-
-    <nav class="navbar navbar-inverse navbar-fixed-top">
+    <nav class="navbar navbar-inverse">
       <div class="container">
-        <div class="navbar-header">
-          <a class="navbar-brand" href="/" >Intercom Populate</a>
-        </div>
+          <p><a class="navbar-brand" href="/" ><img src="https://downloads.intercomcdn.com/i/o/71995579/7e8e462dee5d13c376ab8aa1/logo.png"> | 🏭 Generate</a></p>
       </div>
     </nav>
-
-    <div class="jumbotron">
-      <div class="container">
-      </br>
-        <p>Paste in your personal access token and specify the number of users / companies.</p>
-      </div>
-
-      <div class="container">
-        <form method="POST" action="/seed" style="width:50%">
-            <div class="form-group">
-              <label>Personal Access Token:</label>
-              <input type="text" class="form-control" name="pat">
-            </div>
-          <button type="submit" class="btn btn-success">Submit</button>
-        </form>
-      </div>
+    <div class="container" id="intro">
+      <p>Generate sample users and conversations for your test app. If multiple people are using this at once it will break down and fall over. Try waiting 2 minutes and trying again.</p>
+      <p>Reach out to <strong><a style="text-decoration:none" href="https://downloads.intercomcdn.com/i/o/72003015/3ca6c3cd4149460cff954dd5/awesome.gif" target="_blank">@chris</a></strong> on Slack if you run into problems or have feedback on other features that you'd find useful. Here's some links to help get your access token!
+        <ul>
+          <li>Find Your Token <a href="https://app.intercom.io/a/apps/_/developer-hub">here</a></li>
+          <li>Confirm Your Installation <a href="https://app.intercom.com/a/apps/_/settings/web">here</a>.</li>
+        </ul>
     </div>
-
+    <hr>
     <div class="container">
-      <h1>Conversations</h1>
-      <form method="POST" action="/conversations" style="width:50%">
+      <form method="POST" action="/seed">
           <div class="form-group">
+            <h2>Generate Users</h2>
+            <label>Personal Access Token:</label>
+            <input type="text" class="form-control" name="pat">
+          </div>
+        <button type="submit" class="btn btn-success">Generate 100 Users 🥁</button>
+      </form>
+    <hr>
+    </div>
+    <div class="container">
+      <h2>Generate Conversations</h2>
+      <form method="POST" action="/conversations">
+          <div class="form-group">
+            <p>Make sure you have already generated some users before trying to create conversations! :)
             <label>Personal Access Token:</label>
             <input type="text" class="form-control" name="pat">
           </div>
@@ -59,7 +56,7 @@
               <input type="radio" name="role" id="CSL_button" value="CSL" autocomplete="off"> CSL
             </label>
           </div>
-        <button type="submit" class="btn btn-success">Submit</button>
+        <button type="submit" class="btn btn-success">Generate Convos 🗣</button>
       </form>
     </div>
 
@@ -67,16 +64,8 @@
       <!-- Example row of columns -->
       <hr>
       <footer>
-        <p>Contribute <a href="https://github.com/Aslonski/Intercom-User-Generator/tree/frontend">here</a>.</p>
+      <a onclick="/scripts.js"><button id="button">Button!</button></a>
       </footer>
     </div> <!-- /container -->
-
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
-    <script src="../../dist/js/bootstrap.min.js"></script>
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
   </body>
 </html>

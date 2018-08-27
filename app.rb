@@ -4,8 +4,16 @@ require "intercom"
 require "faker"
 
 
+number_of_users = 100
+number_of_companies = 20
+
+
 get '/' do
   erb :index
+end
+
+get '/control' do
+  erb :control
 end
 
 
@@ -20,22 +28,22 @@ post '/seed' do
 
 
 	@user_id = []
-	params[:number_of_users].to_i.times do
+	number_of_users.times do
 		@user_id << rand(300)
 	end
 
 	company_id = []
-	params[:number_of_companies].to_i.times do
+	number_of_companies.times do
 		company_id << rand(100..500)
 	end
 
 	company_name = []
-	params[:number_of_companies].to_i.times do
+	number_of_users.times do
 	  company_name << Faker::App.name
 	end
 
 	monthly_spend = []
-	params[:number_of_companies].to_i.times do
+	number_of_users.times do
 		monthly_spend << rand(600..2000)
 	end
 
@@ -97,7 +105,7 @@ post '/conversations' do
     puts "You selected #{params[:role]}"
 
     # Open Spreadsheet
-    csv_text = File.read("csr.csv")
+    csv_text = File.read("#{params[:role]}.csv")
 
     # Create array of questions
     questions = []

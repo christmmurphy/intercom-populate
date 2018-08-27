@@ -1,0 +1,16 @@
+.navbar-brand img {
+  display: inline;
+  margin-right: 10px;
+}
+
+.navbar {
+  border-radius: 0px;
+}
+
+.container{
+  max-width: 750px;
+}
+
+p{
+  margin-bottom: 10px;
+}
