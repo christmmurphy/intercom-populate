@@ -111,18 +111,18 @@ post '/conversations' do
     # Open Spreadsheet
     get_csv = "#{params[:role]}"
     if get_csv == "csr"
-      csv_text = File.read("https://cl.ly/a4f78da3a63b/csr.csv")
+      csv_text = ["Here's some questions.", "I'd like to purchase an Intercom system for our building.", "How much do you charge per API?", "I heard you had a deal on 2 for 1 webhooks that I'd like to get in on.", "I'll see you on the internet!"]
     elsif get_csv == "cse"
-      csv_text = File.read("https://cl.ly/abd0a3ee50fa/cse.csv")
+      csv_text = ["Here's some questions.", "I'd like to purchase an Intercom system for our building.", "How much do you charge per API?", "I heard you had a deal on 2 for 1 webhooks that I'd like to get in on.", "I'll see you on the internet!"]
     else
-      csv_text == File.read("https://cl.ly/7aa520d2d8db/csl.csv")
+      csv_text = ["Here's some questions.", "I'd like to purchase an Intercom system for our building.", "How much do you charge per API?", "I heard you had a deal on 2 for 1 webhooks that I'd like to get in on.", "I'll see you on the internet!"]
     end
 
 
 
     # Create array of questions
     questions = []
-      csv_text.each_line {|line|
+      csv_text.each {|line|
        questions << line
      }
 
